@@ -65,7 +65,20 @@ body {
     background: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
 }
+
+.popup.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 
 .popup_content {
     min-height: 100%;
@@ -82,6 +95,7 @@ body {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    
 }
 
 .container h1 {
