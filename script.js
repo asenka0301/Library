@@ -16,4 +16,4 @@ function closeForm(event){
 }
 
 bookBtn.addEventListener('click', openForm);
-window.addEventListener('click', closeForm);~
+window.addEventListener('click', closeForm);
