@@ -4,15 +4,14 @@ const popUpContent = document.querySelector('.popup_content');
 const bookForm = document.querySelector('.book_form');
 const libraryContent = document.querySelector('.book_container');
 
-// console.log(JSON.parse(localStorage.getItem('books')));
-let mylibrary = []; //куда пойдут книги
+let mylibrary = [];
 
 const booksInLS = JSON.parse(localStorage.getItem('books'));
 if (booksInLS) {
     booksInLS.forEach(book => addToArray(book));
 }
 
-function Book(title, author, pages, isRead) { // функция конструктор
+function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -46,7 +45,7 @@ function closeForm(event){
         closeModal();
     }
 }
-function getBookInfo(){ // получаем инфо из form
+function getBookInfo(){
     const bookTitle = document.getElementById('title').value;
     const bookAuthor = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
@@ -73,13 +72,11 @@ function displayTheBook(book) {
         bookCard.classList.add('book_info');
         bookCard.setAttribute('data-id', `${book.title}`);
         bookCard.innerHTML = `
-                <h2>${book.title}</h2>
+                <h3>"${book.title}"</h3>
                 <h3>${book.author}</h3>
-                <h3>${book.pages}pages</h3>
-                <div class="control">
-                    <button class="read" id="bookStatus">${getBookStatus(book)}</button>
-                    <button class="remove" id="deleteBtn">Remove</button>
-                </div>
+                <h3>${book.pages} pages</h3>
+                <button class="read" id="bookStatus">${getBookStatus(book)}</button>
+                <button class="remove" id="deleteBtn">Remove</button>
         `;
         const removeBtn = bookCard.querySelector('#deleteBtn');
         removeBtn.addEventListener("click", function(){
@@ -111,6 +108,7 @@ function displayTheBook(book) {
             let currentBook = mylibrary[bookIndex];
             toggleBookStatus(currentBook);
             bookStatusBtn.textContent = getBookStatus(currentBook);
+            updateLS();
         });
 
         libraryContent.appendChild(bookCard);
